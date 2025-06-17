@@ -10,14 +10,23 @@ if ($_SERVER['REQUEST_METHOD']	== 'POST') {
             fn_abcd__meta_tags_update($_REQUEST['meta_tag_data']);
 
             fn_set_notification('N', __('notice'), __('ab__meta_tags.updated'));
-            }
-            return [CONTROLLER_STATUS_OK, "abcd__meta_tags.manage"];
         }
+        return [CONTROLLER_STATUS_OK, "abcd__meta_tags.manage"];
+    }
     if ($mode == 'delete') {
         if (!empty($_REQUEST['thread_id'])) {
             fn_abcd__meta_tags_delete_tags([(int) $_REQUEST['thread_id']]);
         }
         return [CONTROLLER_STATUS_OK, 'abcd__meta_tags.manage'];
+    }
+    if ($mode === 'update_status') {
+        $thread_id = isset($_REQUEST['thread_id']) ? (int) $_REQUEST['thread_id'] : 0;
+        $status = $_REQUEST['status'] ?? '';
+
+        if ($thread_id > 0 && in_array($status, ['A', 'D'])) {
+            fn_abcd__meta_tags_update_tags_status($thread_id, $status);
+        }
+        exit;
     }
 
 }

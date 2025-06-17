@@ -15,7 +15,7 @@
             <item for="install">
                 CREATE TABLE IF NOT EXISTS `?:abcd__meta_tags` (
                 `thread_id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-                `page_name` VARCHAR(255) NOT NULL,
+                `status` CHAR(1) NOT NULL DEFAULT 'A',
                 PRIMARY KEY (`thread_id`)
                 ) DEFAULT CHARSET=UTF8;
             </item>
