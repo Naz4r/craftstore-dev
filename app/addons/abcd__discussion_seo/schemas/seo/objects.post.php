@@ -1,8 +1,8 @@
 <?php
 
-$schema['t'] = [
-    'table' => '?:abcd__meta_tags_descriptions',
-    'description' => 'page_title',
+$schema[ABCD_DS_OBJECT_TYPE] = [
+    'table' => '?:abcd__discussion_seo_descriptions',
+    'description' => 'meta_description',
     'dispatch' => 'discussion.view',
     'item' => 'thread_id',
     'condition' => '',

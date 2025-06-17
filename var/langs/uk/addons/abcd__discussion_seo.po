@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: abcd__discussion_seo\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Ukrainian\n"
+"Language: uk_UA\n"
+
+# Назва аддону
+msgctxt "Addons::name::abcd__discussion_seo"
+msgid "abcd__discussion_seo"
+msgstr "ABCD: SEO теги сторінки відгуків"
+
+# Опис аддону
+msgctxt "Addons::description::abcd__discussion_seo"
+msgid "abcd__discussion_seo_description"
+msgstr "Керування SEO мета тегами сторінок відгуків (title, description) за ID сторінки відгуків."
+
+# Назва для списку аддонів
+msgctxt "Languages::abcd__discussion_seo"
+msgid "abcd__discussion_seo"
+msgstr "ABCD: SEO теги сторінки відгуків"
+
+# Текст у меню (головний пункт)
+msgctxt "Languages::abcd__discussion_seo.menu_title"
+msgid "abcd__discussion_seo.menu_title"
+msgstr "ABCD: SEO теги сторінки відгуків"
+
+# Текст у меню (головний пункт)
+msgctxt "Languages::abcd__discussion_seo.settings_discussion_seo"
+msgid "abcd__discussion_seo.settings_discussion_seo"
+msgstr "ABCD: Налаштування SEO тегів для сторінки відгуків"
+
+# Альтернативний текст (tooltip, alt) для меню
+msgctxt "Languages::abcd__discussion_seo.manage"
+msgid "abcd__discussion_seo.manage"
+msgstr "Керування SEO тегами відгуків"
+
+# Підписи у формі / списках
+msgctxt "Languages::abcd__discussion_seo.page_name"
+msgid "abcd__discussion_seo.page_name"
+msgstr "Назва сторінки"
+
+msgctxt "Languages::abcd__discussion_seo.thread_id"
+msgid "abcd__discussion_seo.thread_id"
+msgstr "ID сторінки відгуків <code>thread_id</code>"
+
+msgctxt "Languages::abcd__discussion_seo.page_title"
+msgid "abcd__discussion_seo.page_title"
+msgstr "Тег <code>title</code> для сторінки"
+
+msgctxt "Languages::abcd__discussion_seo.meta_description"
+msgid "abcd__discussion_seo.meta_description"
+msgstr "Мета тег <code>description</code>"
+
+msgctxt "Languages::abcd__discussion_seo.status"
+msgid "abcd__discussion_seo.status"
+msgstr "Статус"
+
+msgctxt "Languages::abcd__discussion_seo.settings"
+msgid "abcd__discussion_seo.settings"
+msgstr "Налаштування модуля"
+
+msgctxt "Languages::abcd__discussion_seo.settings_meta_tags"
+msgid "abcd__discussion_seo.settings_meta_tags"
+msgstr "Мета теги сторінки відгуків"
+
+msgctxt "Languages::abcd__discussion_seo.add_new_tag"
+msgid "abcd__discussion_seo.add_new_tag"
+msgstr "Додати нові SEO теги"
+
+msgctxt "Languages::abcd__discussion_seo.preview"
+msgid "abcd__discussion_seo.preview"
+msgstr "Перегляд"
+
+msgctxt "Languages::abcd__discussion_seo.edit"
+msgid "abcd__discussion_seo.edit"
+msgstr "Редагувати"
+
+msgctxt "Languages::abcd__discussion_seo.delete"
+msgid "abcd__discussion_seo.delete"
+msgstr "Видалити"
+
+msgctxt "Languages::abcd__discussion_seo.tools"
+msgid "abcd__discussion_seo.tools"
+msgstr "Інструменти"

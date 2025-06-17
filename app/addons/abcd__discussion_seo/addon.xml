@@ -1,27 +1,25 @@
 <?xml version="1.0"?>
 <addon scheme="3.0">
-    <id>abcd__meta_tags</id>
+    <id>abcd__discussion_seo</id>
     <version>1.0</version>
-    <priority>4294967294</priority>
+    <priority>2025</priority>
     <position>0</position>
     <auto_install>MULTIVENDOR,ULTIMATE</auto_install>
     <default_language>en</default_language>
     <status>active</status>
 
     <queries>
-        <item>DROP TABLE IF EXISTS ?:abcd__meta_tags;</item>
-        <item>DROP TABLE IF EXISTS ?:abcd__meta_tags_descriptions;</item>
-
             <item for="install">
-                CREATE TABLE IF NOT EXISTS `?:abcd__meta_tags` (
-                `thread_id` MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+                CREATE TABLE IF NOT EXISTS `?:abcd__discussion_seo` (
+                `thread_id` MEDIUMINT(8) UNSIGNED NOT NULL,
                 `status` CHAR(1) NOT NULL DEFAULT 'A',
+                `page_name` VARCHAR(255) NOT NULL,
                 PRIMARY KEY (`thread_id`)
                 ) DEFAULT CHARSET=UTF8;
             </item>
 
             <item for="install">
-                CREATE TABLE IF NOT EXISTS `?:abcd__meta_tags_descriptions` (
+                CREATE TABLE IF NOT EXISTS `?:abcd__discussion_seo_descriptions` (
                 `thread_id` MEDIUMINT(8) UNSIGNED NOT NULL,
                 `page_title` VARCHAR(255) NOT NULL DEFAULT '',
                 `meta_description` TEXT NOT NULL,
@@ -29,8 +27,5 @@
                 PRIMARY KEY (`thread_id`, `lang_code`)
                 ) DEFAULT CHARSET=UTF8;
             </item>
-
-        <item for="uninstall">DROP TABLE IF EXISTS ?:abcd__meta_tags;</item>
-        <item for="uninstall">DROP TABLE IF EXISTS ?:abcd__meta_tags_descriptions;</item>
     </queries>
 </addon>
