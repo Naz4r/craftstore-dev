@@ -19,7 +19,14 @@
                     {foreach from=$tag_data item=tag}
                         <tr class="cm-row-status-{$tag.status|lower} cm-longtap-target">
                             <td class="left mobile-hide"></td>
-                            <td data-th="{__("abcd__discussion_seo.page_name")}">{$tag.page_name|escape}</td>
+                            <td data-th="{__("abcd__discussion_seo.page_name")}">
+                                {assign var="url" value="abcd__discussion_seo.update?thread_id=`$tag.thread_id`&sl=`$smarty.request.sl|default:$smarty.const.DESCR_SL`"|fn_url}
+                                <a class="cm-dialog-opener link--monochrome"
+                                   data-ca-target-id="seo_tag_popup"
+                                   href="{$url}">
+                                    {$tag.page_name|escape}
+                                </a>
+                            </td>
                             <td data-th="{__("abcd__discussion_seo.thread_id")}">{$tag.thread_id}</td>
                             <td class="center" data-th="{__("abcd__discussion_seo.tools")}">
                                 {capture name="tools_list"}

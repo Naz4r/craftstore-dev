@@ -2,6 +2,7 @@
 
 if (!defined('BOOTSTRAP')) { die('Access denied'); }
 
+use Tygh\Enum\SiteArea;
 use Tygh\Registry;
 use Tygh\Languages\Languages;
 use Tygh\Enum\ObjectStatuses;
@@ -9,44 +10,40 @@ use Tygh\Enum\ObjectStatuses;
 /**
  * Оновлення тегів для відгуків (thread)
  */
-function fn_abcd__ds_update_page_data(array $data, $thread_id)
+function fn_abcd__ds_update_page_data(array $data)
 {
-    $thread_id = (int) ($data['thread_id'] ?? $thread_id);
+    $thread_id = (int) ($data['thread_id']);
     if (!$thread_id) {
         return false;
     }
-    $data['thread_id'] = $thread_id;
 
     db_query("REPLACE INTO ?:abcd__discussion_seo ?e", $data);
 
-    $lang_code_to_update = $data['lang_code'] ?? CART_LANGUAGE;
+    $lang_code = $data['lang_code'] ?? DESCR_SL;
 
     $exists = db_get_field(
-        "SELECT 1 FROM ?:abcd__discussion_seo_descriptions WHERE thread_id = ?i AND lang_code = ?s",
-        $thread_id, $lang_code_to_update
+        "SELECT 1 FROM ?:abcd__discussion_seo WHERE thread_id = ?i LIMIT 1",
+        $thread_id
     );
 
-    $languages = Languages::getAll();
+    $descriptions_data = [];
 
     if ($exists) {
-        // Якщо запис є — оновлюємо лише його
-        $data['lang_code'] = $lang_code_to_update;
+        // Тільки одна мова
+        $descriptions_data[] = array_merge($data, ['lang_code' => $lang_code]);
+    } else {
+        // Всі мови
+        $languages = Languages::getAll();
+        foreach ($languages as $code => $_) {
+            $descriptions_data[] = array_merge($data, ['lang_code' => $code]);
+        }
+    }
 
-        db_query("UPDATE ?:abcd__discussion_seo_descriptions SET ?u WHERE thread_id = ?i AND lang_code = ?s",
-            $data, $thread_id, $lang_code_to_update);
+    foreach ($descriptions_data as $desc) {
+        db_query("REPLACE INTO ?:abcd__discussion_seo_descriptions ?e", $desc);
 
         if (Registry::get('addons.seo.status') === ObjectStatuses::ACTIVE) {
-            fn_seo_update_object($data, $thread_id, ABCD_DS_OBJECT_TYPE, $lang_code_to_update);
-        }
-    } else {
-        // Якщо запису нема — додаємо записи для всіх мов
-        foreach ($languages as $code => $_) {
-            $data['lang_code'] = $code;
-            db_query("INSERT INTO ?:abcd__discussion_seo_descriptions ?e", $data);
-
-            if (Registry::get('addons.seo.status') === ObjectStatuses::ACTIVE) {
-                fn_seo_update_object($data, $thread_id, ABCD_DS_OBJECT_TYPE, $code);
-            }
+            fn_seo_update_object($desc, $thread_id, ABCD_DS_OBJECT_TYPE, $desc['lang_code']);
         }
     }
     return $thread_id;
@@ -88,7 +85,7 @@ function fn_abcd__ds_get_page_data($thread_id, $lang_code)
         return false;
     }
 
-    if (!defined('ADMIN_PANEL') && $data['status'] !== 'A') {
+    if (SiteArea::isStorefront(AREA) && $data['status'] !== ObjectStatuses::ACTIVE) {
         return false;
     }
 

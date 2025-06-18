@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($mode === 'update') {
         if (!empty($_REQUEST['seo_tag_data'])) {
-            fn_abcd__ds_update_page_data($_REQUEST['seo_tag_data'],$thread_id);
+            fn_abcd__ds_update_page_data($_REQUEST['seo_tag_data']);
         }
 
         return [CONTROLLER_STATUS_OK, "abcd__discussion_seo.manage"];
@@ -23,11 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         return [CONTROLLER_STATUS_OK, 'abcd__discussion_seo.manage'];
     }
-
     return;
 }
 
-if ($mode == 'manage') {
+if ($mode === 'manage') {
     $params = $_REQUEST;
 
     $tags_data = fn_abcd__ds_get_list_page_tags($params);
