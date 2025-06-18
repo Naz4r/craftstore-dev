@@ -10,7 +10,7 @@ use Tygh\Enum\ObjectStatuses;
 /**
  * Оновлення тегів для відгуків (thread)
  */
-function fn_abcd__ds_update_page_data(array $data)
+function fn_abcd__ds_update_page_data(array $data,$thread_id)
 {
     $thread_id = (int) ($data['thread_id']);
     if (!$thread_id) {

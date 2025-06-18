@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($mode === 'update') {
         if (!empty($_REQUEST['seo_tag_data'])) {
-            fn_abcd__ds_update_page_data($_REQUEST['seo_tag_data']);
+            fn_abcd__ds_update_page_data($_REQUEST['seo_tag_data'],$thread_id);
         }
 
         return [CONTROLLER_STATUS_OK, "abcd__discussion_seo.manage"];
