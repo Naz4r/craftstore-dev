@@ -21,7 +21,7 @@
                             <td class="left mobile-hide"></td>
                             <td data-th="{__("abcd__discussion_seo.page_name")}">
                                 {assign var="url" value="abcd__discussion_seo.update?thread_id=`$tag.thread_id`&sl=`$smarty.request.sl|default:$smarty.const.DESCR_SL`"|fn_url}
-                                <a class="cm-dialog-opener link--monochrome"
+                                <a class="cm-dialog-opener link--monochrome cm-dialog-destroy-on-close"
                                    data-ca-target-id="seo_tag_popup"
                                    href="{$url}">
                                     {$tag.page_name|escape}
@@ -32,7 +32,7 @@
                                 {capture name="tools_list"}
                                     <li>{btn type="list" text=__("abcd__discussion_seo.preview") href="index.php?dispatch=discussion.view?thread_id=`$tag.thread_id`" target="_blank" rel="noopener noreferrer"}</li>
                                     <li class="divider"></li>
-                                    <li>{btn type="list" text=__("abcd__discussion_seo.edit") class="cm-dialog-opener" data-ca-target-id="seo_tag_popup" href="abcd__discussion_seo.update?thread_id=`$tag.thread_id`&sl=`$smarty.request.sl|default:$smarty.const.DESCR_SL`"}</li>
+                                    <li>{btn type="list" text=__("abcd__discussion_seo.edit") class="cm-dialog-opener cm-dialog-destroy-on-close" data-ca-target-id="seo_tag_popup" href="abcd__discussion_seo.update?thread_id=`$tag.thread_id`&sl=`$smarty.request.sl|default:$smarty.const.DESCR_SL`"}</li>
                                     <li>{btn type="list" text=__("abcd__discussion_seo.delete") class="cm-confirm" href="abcd__discussion_seo.delete?thread_id=`$tag.thread_id`" method="POST"}</li>
                                 {/capture}
                                 <div class="hidden-tools">

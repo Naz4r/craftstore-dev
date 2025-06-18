@@ -12,7 +12,7 @@ use Tygh\Enum\ObjectStatuses;
  */
 function fn_abcd__ds_update_page_data(array $data,$thread_id)
 {
-    $thread_id = (int) ($data['thread_id']);
+    $thread_id = (int) $thread_id;
     if (!$thread_id) {
         return false;
     }
